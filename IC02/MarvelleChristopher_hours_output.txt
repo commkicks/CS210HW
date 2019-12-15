@@ -1,0 +1,6 @@
+Output from HourWorked:
+Total hours worked by Erica = 825.75
+Total hours worked by Erin = 169.75
+Total hours worked by Simone = 262.0
+Total hours worked by Ryan = 187.75
+Total hours worked by Kendall = 5.5
