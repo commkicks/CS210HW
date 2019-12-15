@@ -1,0 +1,77 @@
+/*
+   CS210 Fall2019 Assignment: HW08 Ex03 "manhattanDistance"
+   Christopher Marvelle 10/NOV/2019
+   Returns the “Manhattan distance” between the current Point object and the given other Point object. 
+   The Manhattan distance refers to the distance between two places if one can travel between them only by moving horizontally or vertically, 
+   as though driving on the streets of Manhattan. In our case, the Manhattan distance is the sum of the absolute values of the differences in their coordinates; 
+   in other words, the difference in x plus the difference in y between the points.
+*/
+
+// A Point object represents a pair of (x, y) coordinates.
+// Seventh version: Immutable.
+// Class invariant: x >= 0 && y >= 0.
+public class Point {
+   private int x;
+   private int y;
+   
+   // Constructs a new point at the origin, (0, 0).
+   public Point() {
+      this(0, 0); // calls Point(int, int) constructor
+   }
+
+   // Constructs a new point with the given (x, y) location.
+   // pre: x >= 0 && y >= 0
+   public Point(int x, int y) {
+      if (x < 0 || y < 0) {
+         throw new IllegalArgumentException();
+      }
+   
+      this.x = x;
+      this.y = y;
+   }
+
+   // Returns the distance between this Point and (0, 0).
+   public double distanceFromOrigin() {
+      return Math.sqrt(x * x + y * y);
+   }
+
+   // Returns whether o refers to a point with the same (x, y)
+   // coordinates as this point.
+   public boolean equals(Object o) {
+      if (o instanceof Point) {
+         Point other = (Point) o;
+         return x == other.x && y == other.y;
+      } else {  // not a Point object
+         return false;
+      }
+   }
+
+   // Returns the x-coordinate of this point.
+   public int getX() {
+      return x;
+   }
+
+   // Returns the y-coordinate of this point.
+   public int getY() {
+      return y;
+   }
+
+   // Returns a String representation of this point.
+   public String toString() {
+      return "(" + x + ", " + y + ")";
+   }
+
+   // Shifts this point's location by the given amount.
+   // pre: x + dx >= 0 && y + dy >= 0
+   public Point translate(int dx, int dy) {
+      return new Point(x + dx, y + dy);
+   }
+   
+   // accessor method manhattanDistance(Point other) for HW08Ex03.
+   // Returns the “Manhattan distance” between the "current" Point object and the given "other" Point object.
+   public int manhattanDistance(Point other) {
+      // absolute difference of x coords + absolute difference of the y coords
+      return Math.abs(this.x - other.x) + Math.abs(this.y - other.y);
+   }
+}//end of point
+
